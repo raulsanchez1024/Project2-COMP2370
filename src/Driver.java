@@ -20,19 +20,18 @@ public class Driver {
 		return true;
 	}
 	
-	public static int checkHash(String[] arr, int count) {
+	public static int checkHash(ArrayList<String> arrList, int count) {
 		int hash = 0;
 		
 		for(int i = 0; i < count; i++) {
-			hash = hash ^ arr[i].hashCode();
+			hash = hash ^ arrList.get(i).hashCode();
 		}
 		
 		return hash;
 	}
 	
-	static void insertionSort(String f) throws IOException, URISyntaxException {
+	public static void insertionSort(String f) throws IOException, URISyntaxException {
 //		get file, read file, and store the text into an array
-		
 		URL url = ClassLoader.getSystemResource(f);
 
 		
@@ -45,12 +44,9 @@ public class Driver {
 	    	arrList.add(sc.next());
 	    }
 	    
-//	    check if arrList is alphaSorted
-	    System.out.println("arrList is sorted: " + alphaSorted(arrList));
-	    
 //	   convert arrList to a regular array
 	    String[] arr = arrList.toArray(new String[0]);
-	    	    
+
 //	    close scanner
 	    sc.close();
 	    
@@ -64,17 +60,9 @@ public class Driver {
         }
         arr[i + 1] = key;
     }
-//	    reverse arr
+//	    reverse arr and covert back to ArrayList
 	    Collections.reverse(Arrays.asList(arr));
-//	    print out
-	    for(int i = 0; i < arr.length; i++) {
-	    	System.out.println(arr[i]);
-	    }
-	    
 	    ArrayList<String> finalArrList = new ArrayList<String>(Arrays.asList(arr));
-//	    check if finalArrList is alphaSorted
-	    System.out.println("arrList is sorted: " + alphaSorted(finalArrList));
-
 
 	}
 	
@@ -85,23 +73,8 @@ public class Driver {
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		
-		File file = new File("/Users/raulsanchez/Desktop/COMP 2370/Program2/src/istest3.txt");
-		Scanner sc = new Scanner(file);
-		
-		ArrayList<String> arr = new ArrayList<String>();
-	    while (sc.hasNext()) {
-	    	arr.add(sc.next());
-	    }
-	    
-	    sc.close();
-	    
 	    insertionSort(args[0]);
 	    
-
-
-	    
-
-	    sc.close();
 
 	}
 }
